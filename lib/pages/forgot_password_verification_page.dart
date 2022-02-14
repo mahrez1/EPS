@@ -55,7 +55,7 @@ class _ForgotPasswordVerificationPageState extends State<ForgotPasswordVerificat
                             ),
                             SizedBox(height: 10,),
                             Text(
-                              'Enter the verification code we just sent you on your email address.',
+                              'Entrez le code de vérification que nous venons de vous envoyer sur votre adresse e-mail.',
                               style: TextStyle(
                                 // fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -91,20 +91,20 @@ class _ForgotPasswordVerificationPageState extends State<ForgotPasswordVerificat
                               TextSpan(
                                 children: [
                                   TextSpan(
-                                    text: "If you didn't receive a code! ",
+                                    text: "Si vous n'avez pas reçu de code !",
                                     style: TextStyle(
                                       color: Colors.black38,
                                     ),
                                   ),
                                   TextSpan(
-                                    text: 'Resend',
+                                    text: 'Renvoyer',
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () {
                                         showDialog(
                                           context: context,
                                           builder: (BuildContext context) {
-                                            return ThemeHelper().alartDialog("Successful",
-                                                "Verification code resend successful.",
+                                            return ThemeHelper().alartDialog("À succès",
+                                                "Code de vérification renvoyé avec succès.",
                                                 context);
                                           },
                                         );
@@ -126,7 +126,7 @@ class _ForgotPasswordVerificationPageState extends State<ForgotPasswordVerificat
                                   padding: const EdgeInsets.fromLTRB(
                                       40, 10, 40, 10),
                                   child: Text(
-                                    "Verify".toUpperCase(),
+                                    "Verifier".toUpperCase(),
                                     style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,

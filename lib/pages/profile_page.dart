@@ -27,7 +27,7 @@ class _ProfilePageState extends State<ProfilePage>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile Page",
+        title: Text("Page de profil",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         elevation: 0.5,
@@ -88,7 +88,7 @@ class _ProfilePageState extends State<ProfilePage>{
                 ),
                 child: Container(
                   alignment: Alignment.bottomLeft,
-                  child: Text("FlutterTutorial.Net",
+                  child: Text("FlutterProjectPim",
                     style: TextStyle(fontSize: 25,color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -102,7 +102,7 @@ class _ProfilePageState extends State<ProfilePage>{
               ),
               ListTile(
                 leading: Icon(Icons.login_rounded,size: _drawerIconSize,color: Theme.of(context).accentColor),
-                title: Text('Login Page', style: TextStyle(fontSize: _drawerFontSize, color: Theme.of(context).accentColor),
+                title: Text('Page de connexion', style: TextStyle(fontSize: _drawerFontSize, color: Theme.of(context).accentColor),
                 ),
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()),);
@@ -111,7 +111,7 @@ class _ProfilePageState extends State<ProfilePage>{
               Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
                 leading: Icon(Icons.person_add_alt_1, size: _drawerIconSize,color: Theme.of(context).accentColor),
-                title: Text('Registration Page',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
+                title: Text('Page d\'inscription',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationPage()),);
                 },
@@ -119,7 +119,7 @@ class _ProfilePageState extends State<ProfilePage>{
               Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
                 leading: Icon(Icons.password_rounded, size: _drawerIconSize,color: Theme.of(context).accentColor,),
-                title: Text('Forgot Password Page',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
+                title: Text('Mot de passe oublier',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
                 onTap: () {
                   Navigator.push( context, MaterialPageRoute(builder: (context) => ForgotPasswordPage()),);
                 },
@@ -127,7 +127,7 @@ class _ProfilePageState extends State<ProfilePage>{
               Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
                 leading: Icon(Icons.verified_user_sharp, size: _drawerIconSize,color: Theme.of(context).accentColor,),
-                title: Text('Verification Page',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
+                title: Text('Page de verification',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
                 onTap: () {
                   Navigator.push( context, MaterialPageRoute(builder: (context) => ForgotPasswordVerificationPage()), );
                 },
@@ -135,7 +135,7 @@ class _ProfilePageState extends State<ProfilePage>{
               Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
                 leading: Icon(Icons.logout_rounded, size: _drawerIconSize,color: Theme.of(context).accentColor,),
-                title: Text('Logout',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
+                title: Text('Deconnexion',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
                 onTap: () {
                   SystemNavigator.pop();
                 },
@@ -167,9 +167,9 @@ class _ProfilePageState extends State<ProfilePage>{
                     child: Icon(Icons.person, size: 80, color: Colors.grey.shade300,),
                   ),
                   SizedBox(height: 20,),
-                  Text('Mr. Donald Trump', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
+                  Text('Mahrez', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
                   SizedBox(height: 20,),
-                  Text('Former President', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                  Text('Étudiant/développeur', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
                   SizedBox(height: 10,),
                   Container(
                     padding: EdgeInsets.all(10),
@@ -179,7 +179,7 @@ class _ProfilePageState extends State<ProfilePage>{
                           padding: const EdgeInsets.only(left: 8.0, bottom: 4.0),
                           alignment: Alignment.topLeft,
                           child: Text(
-                            "User Information",
+                            "Informations de l'utilisateur",
                             style: TextStyle(
                               color: Colors.black87,
                               fontWeight: FontWeight.w500,
@@ -203,24 +203,24 @@ class _ProfilePageState extends State<ProfilePage>{
                                           contentPadding: EdgeInsets.symmetric(
                                               horizontal: 12, vertical: 4),
                                           leading: Icon(Icons.my_location),
-                                          title: Text("Location"),
+                                          title: Text("Localisation"),
                                           subtitle: Text("USA"),
                                         ),
                                         ListTile(
                                           leading: Icon(Icons.email),
                                           title: Text("Email"),
-                                          subtitle: Text("donaldtrump@gmail.com"),
+                                          subtitle: Text("mahrez.mathlouthi@esprit.tn"),
                                         ),
                                         ListTile(
                                           leading: Icon(Icons.phone),
-                                          title: Text("Phone"),
+                                          title: Text("Numero"),
                                           subtitle: Text("99--99876-56"),
                                         ),
                                         ListTile(
                                           leading: Icon(Icons.person),
-                                          title: Text("About Me"),
+                                          title: Text("À propos de moi"),
                                           subtitle: Text(
-                                              "This is a about me link and you can khow about me in this section."),
+                                              "Ceci est un lien à propos de moi et vous pouvez me connaître dans cette section."),
                                         ),
                                       ],
                                     ),

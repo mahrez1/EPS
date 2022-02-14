@@ -43,7 +43,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Forgot Password?',
+                            Text('Mot de passe oublié?',
                               style: TextStyle(
                                   fontSize: 35,
                                   fontWeight: FontWeight.bold,
@@ -52,7 +52,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                               // textAlign: TextAlign.center,
                             ),
                             SizedBox(height: 10,),
-                            Text('Enter the email address associated with your account.',
+                            Text('Saisissez l\'adresse e-mail associée à votre compte.',
                               style: TextStyle(
                                 // fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -61,7 +61,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                               // textAlign: TextAlign.center,
                             ),
                             SizedBox(height: 10,),
-                            Text('We will email you a verification code to check your authenticity.',
+                            Text('Nous vous enverrons un code de vérification par e-mail pour vérifier votre authenticité.',
                               style: TextStyle(
                                 color: Colors.black38,
                                 // fontSize: 20,
@@ -78,13 +78,13 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           children: <Widget>[
                             Container(
                               child: TextFormField(
-                                decoration: ThemeHelper().textInputDecoration("Email", "Enter your email"),
+                                decoration: ThemeHelper().textInputDecoration("Email", "Entez votre email"),
                                 validator: (val){
                                   if(val!.isEmpty){
-                                    return "Email can't be empty";
+                                    return "L\'e-mail ne peut pas être vide";
                                   }
                                   else if(!RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$").hasMatch(val)){
-                                    return "Enter a valid email address";
+                                    return "Entrez une adresse mail valide";
                                   }
                                   return null;
                                 },
@@ -100,7 +100,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                   padding: const EdgeInsets.fromLTRB(
                                       40, 10, 40, 10),
                                   child: Text(
-                                    "Send".toUpperCase(),
+                                    "Envoyer".toUpperCase(),
                                     style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
@@ -123,9 +123,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                             Text.rich(
                               TextSpan(
                                 children: [
-                                  TextSpan(text: "Remember your password? "),
+                                  TextSpan(text: " Rappelez-vous votre mot de passe ?"),
                                   TextSpan(
-                                    text: 'Login',
+                                    text: 'Connecter',
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () {
                                         Navigator.push(
