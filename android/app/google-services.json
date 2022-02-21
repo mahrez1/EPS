@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "289458544324",
+    "project_id": "examination-process-simplifier",
+    "storage_bucket": "examination-process-simplifier.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:289458544324:android:8e0d662121dafa8962b391",
+        "android_client_info": {
+          "package_name": "net.fluttertutorial.flutter_login_ui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "289458544324-1jtq1m83gnj4kpq8tn74hvdr1qqjmci1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvcO2z4GX1hww1108HboEo0zUk9a_WSO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "289458544324-1jtq1m83gnj4kpq8tn74hvdr1qqjmci1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,6 @@
 
 import 'package:eps/common/theme_helper.dart';
+import 'package:eps/pages/nav_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -87,7 +88,7 @@ class _LoginPageState extends State<LoginPage>{
                                 ),
                                 onPressed: (){
                                   //After successful login we will redirect to profile page. Let's create profile page now
-                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NavScreen()));
                                 },
                               ),
                             ),
