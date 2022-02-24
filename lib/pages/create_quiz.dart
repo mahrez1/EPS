@@ -1,4 +1,5 @@
 import 'package:eps/pages/add_question.dart';
+import 'package:eps/pages/widgets/widget.dart';
 import 'package:eps/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:random_string/random_string.dart';
@@ -34,7 +35,8 @@ class _CreateQuizState extends State<CreateQuiz> {
       Map<String, String> quizData = {
         "quizImgUrl" : quizImgUrl,
         "quizTitle" : quizTitle,
-        "quizDesc" : quizDesc
+        "quizDesc" : quizDesc,
+        "quizId" : quizId
       };
 
       databaseService.addQuizData(quizData, quizId).then((value){
@@ -57,7 +59,7 @@ class _CreateQuizState extends State<CreateQuiz> {
         leading: BackButton(
           color: Colors.black54,
         ),
-        //title: AppLogo(),
+        title: AppLogo(),
         brightness: Brightness.light,
         elevation: 0.0,
         backgroundColor: Colors.transparent,

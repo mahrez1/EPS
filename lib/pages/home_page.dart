@@ -1,14 +1,10 @@
 
-import 'package:flutter/cupertino.dart';
+import 'package:eps/pages/create_quiz.dart';
+import 'package:eps/pages/quiz_play.dart';
+import 'package:eps/pages/widgets/widget.dart';
+import 'package:eps/services/database.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:eps/pages/login_page.dart';
-import 'package:eps/pages/splash_screen.dart';
-import 'package:eps/pages/widgets/header_widget.dart';
 
-import 'forgot_password_page.dart';
-import 'forgot_password_verification_page.dart';
-import 'registration_page.dart';
 
 class HomePage extends StatefulWidget{
 
@@ -18,146 +14,139 @@ class HomePage extends StatefulWidget{
   }
 }
 
-class _HomePageState extends State<HomePage>{
+class _HomePageState extends State<HomePage> {
+   late Stream quizStream;
+  DatabaseService databaseService = new DatabaseService();
 
-  double  _drawerIconSize = 24;
-  double _drawerFontSize = 17;
+  Widget quizList() {
+    return Container(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              StreamBuilder(
+                stream: quizStream,
+                builder: (context,AsyncSnapshot snapshot) {
+                  return snapshot.data == null
+                      ? Container()
+                      : ListView.builder(
+                      shrinkWrap: true,
+                      physics: ClampingScrollPhysics(),
+                      itemCount: snapshot.data.docs.length,
+                      itemBuilder: (context, index) {
+                        return QuizTile(
+                          noOfQuestions:
+                          snapshot.data.docs.length,
+                          imageUrl:
+                          snapshot.data.docs[index].data()['quizImgUrl'],
+                          title:
+                          snapshot.data.docs[index].data()['quizTitle'],
+                          description:
+                          snapshot.data.docs[index].data()['quizDesc'],
+                          id:
+                          snapshot.data.docs[index].data()['quizId'] ,
+                        );
+                      });
+                },
+              )
+            ],
+          ),
+        ),
+
+    );
+  }
+
+  @override
+  void initState() {
+    databaseService.getQuizData().then((value) {
+      quizStream = value;
+      setState(() {});
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Page d'accueil",
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
-        elevation: 0.5,
-        iconTheme: IconThemeData(color: Colors.white),
-        flexibleSpace:Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: <Color>[Theme.of(context).primaryColor, Theme.of(context).accentColor,]
-              )
-          ),
-        ),
-        actions: [
-          Container(
-            margin: EdgeInsets.only( top: 16, right: 16,),
-            child: Stack(
-              children: <Widget>[
-                Icon(Icons.notifications),
-                Positioned(
-                  right: 0,
-                  child: Container(
-                    padding: EdgeInsets.all(1),
-                    decoration: BoxDecoration( color: Colors.red, borderRadius: BorderRadius.circular(6),),
-                    constraints: BoxConstraints( minWidth: 12, minHeight: 12, ),
-                    child: Text( '5', style: TextStyle(color: Colors.white, fontSize: 8,), textAlign: TextAlign.center,),
-                  ),
-                )
-              ],
-            ),
-          )
-        ],
+        title: AppLogo(),
+        brightness: Brightness.light,
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+        //brightness: Brightness.li,
       ),
+      body: quizList(),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => CreateQuiz()));
+        },
+      ),
+    );
+  }
+}
 
-      body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            Container(height: 100, child: HeaderWidget(100,false,Icons.house_rounded),),
-            Container(
-              alignment: Alignment.center,
-              margin: EdgeInsets.fromLTRB(25, 10, 25, 10),
-              padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-              child: Column(
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      border: Border.all(width: 5, color: Colors.white),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(color: Colors.black12, blurRadius: 20, offset: const Offset(5, 5),),
-                      ],
-                    ),
-                    child: Icon(Icons.person, size: 80, color: Colors.grey.shade300,),
-                  ),
-                  SizedBox(height: 20,),
-                  Text('Mahrez', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
-                  SizedBox(height: 20,),
-                  Text('Étudiant/développeur', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
-                  SizedBox(height: 10,),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          padding: const EdgeInsets.only(left: 8.0, bottom: 4.0),
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            "Informations de l'utilisateur",
-                            style: TextStyle(
-                              color: Colors.black87,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16,
-                            ),
-                            textAlign: TextAlign.left,
-                          ),
-                        ),
-                        Card(
-                          child: Container(
-                            alignment: Alignment.topLeft,
-                            padding: EdgeInsets.all(15),
-                            child: Column(
-                              children: <Widget>[
-                                Column(
-                                  children: <Widget>[
-                                    ...ListTile.divideTiles(
-                                      color: Colors.grey,
-                                      tiles: [
-                                        ListTile(
-                                          contentPadding: EdgeInsets.symmetric(
-                                              horizontal: 12, vertical: 4),
-                                          leading: Icon(Icons.my_location),
-                                          title: Text("Localisation"),
-                                          subtitle: Text("USA"),
-                                        ),
-                                        ListTile(
-                                          leading: Icon(Icons.email),
-                                          title: Text("Email"),
-                                          subtitle: Text("mahrez.mathlouthi@esprit.tn"),
-                                        ),
-                                        ListTile(
-                                          leading: Icon(Icons.phone),
-                                          title: Text("Numero"),
-                                          subtitle: Text("99--99876-56"),
-                                        ),
-                                        ListTile(
-                                          leading: Icon(Icons.person),
-                                          title: Text("À propos de moi"),
-                                          subtitle: Text(
-                                              "Ceci est un lien à propos de moi et vous pouvez me connaître dans cette section."),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  )
-                ],
+class QuizTile extends StatelessWidget {
+  final String imageUrl, title, id, description;
+  final int noOfQuestions;
+
+  QuizTile(
+      {required this.title,
+        required this.imageUrl,
+        required this.description,
+        required this.id,
+        required this.noOfQuestions});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(
+            builder: (context) => QuizPlay(id)
+        ));
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 24),
+        height: 150,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: Stack(
+            children: [
+              Image.network(
+                imageUrl,
+                fit: BoxFit.cover,
+                width: MediaQuery.of(context).size.width,
               ),
-            )
-          ],
+              Container(
+                color: Colors.black26,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        title,
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      SizedBox(height: 4,),
+                      Text(
+                        description,
+                        style: TextStyle(
+                            fontSize: 13,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500),
+                      )
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
   }
-
 }
